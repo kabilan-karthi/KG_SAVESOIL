@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize tweet counter
     initTweetCounter();
+
   });
   
   // Function to generate QR code
@@ -24,37 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('qrcode').innerHTML = qr.createImgTag(5);
   }
   
-  // Function to initialize and update tweet counter
-  function initTweetCounter() {
-    // Get counter element
-    const counterElement = document.getElementById('tweet-counter');
-    
-    // Set initial random count between 100 and 600
-    let count = Math.floor(Math.random() * 500) + 100;
-    counterElement.textContent = count.toLocaleString();
-    
-    // Simulate real-time updates
-    setInterval(() => {
-      // Random chance of increasing count (30% chance)
-      if (Math.random() < 0.3) {
-        // Increase by 1-3 tweets
-        const increase = Math.floor(Math.random() * 3) + 1;
-        count += increase;
-        
-        // Update counter with animation
-        counterElement.classList.add('highlight');
-        counterElement.textContent = count.toLocaleString();
-        
-        // Show visual feedback for new tweets
-        showNewTweetNotification(increase);
-        
-        // Remove highlight class after animation completes
-        setTimeout(() => {
-          counterElement.classList.remove('highlight');
-        }, 1000);
-      }
-    }, 5000); // Check every 5 seconds
-  }
   
   // Function to show notification for new tweets
   function showNewTweetNotification(count) {
@@ -76,7 +46,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 2000);
   }
   
-  // Add CSS for notification animation
+  // Add CSS for notification animation// Function to fetch and update the tweet counter from API
+    async function fetchTweetCount() {
+      const counterElement = document.getElementById('tweet-counter');
+      const API_URL = "https://decisive-foremost-trail.glitch.me/api/count";
+
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        console.log(data); // Log the response data for debugging
+        if (data && typeof data.accessCount === "number") {
+          counterElement.textContent = data.accessCount.toLocaleString();
+        } else {
+          counterElement.textContent = "N/A";
+        }
+      } catch (error) {
+        console.error("Error fetching tweet count:", error);
+        counterElement.textContent = "N/A";
+      }
+    }
+
+    // Run fetchTweetCount every 3 seconds
+    setInterval(fetchTweetCount, 3000);
   (function() {
     const style = document.createElement('style');
     style.textContent = `
