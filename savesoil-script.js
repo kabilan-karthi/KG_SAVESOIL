@@ -9,21 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Function to generate QR code
-  function generateQRCode() {
-    // Improved tweet text with better hashtag formatting
-    const tweetText = encodeURIComponent("I'm supporting the #SaveSoilKGISLEDU movement! 🌍🌱 Join us to help save our planet's soil and secure our future. Learn more at savesoil.org");
-    const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}`;
-    
-    // Generate QR code using qrcode-generator library
-    const typeNumber = 0;
-    const errorCorrectionLevel = 'L';
-    const qr = qrcode(typeNumber, errorCorrectionLevel);
-    qr.addData(tweetUrl);
-    qr.make();
-    
-    // Display QR code
-    document.getElementById('qrcode').innerHTML = qr.createImgTag(5);
-  }
+  
   
   
   // Function to show notification for new tweets
