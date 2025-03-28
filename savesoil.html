@@ -13,7 +13,7 @@
 <body>
   <div class="dashboard-container">
     <div class="dashboard-content">
-      <!-- Header with logos -->
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
       <header>
         <div class="logo-container">
             <img src="https://imgs.search.brave.com/YAMwMQtVYs4TfSNwhI6lzKOt_bJBSexfRUMqpQVme2E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91eHdp/bmcuY29tL3dwLWNv/bnRlbnQvdGhlbWVz/L3V4d2luZy9kb3du/bG9hZC9icmFuZHMt/YW5kLXNvY2lhbC1t/ZWRpYS94LXNvY2lh/bC1tZWRpYS1sb2dv/LWljb24uc3Zn" 
@@ -22,7 +22,61 @@
         </div>
         <h1>Save Soil Dashboard</h1>
       </header>
+      <div class="timer-section">
+        <div class="timer-container">
+          <h2>Countdown Timer</h2>
+          <div id="timer" class="timer-display">10:00</div>
+        </div>
+        <p class="timer-description">Time left to take action and make a difference!</p>
+      </div>
 
+      <style>
+        .timer-section {
+          text-align: center;
+          margin: 20px 0;
+          padding: 20px;
+          background: linear-gradient(135deg, #f3f4f6, #e2e8f0);
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .timer-container {
+          font-family: 'Poppins', sans-serif;
+          font-size: 1.5rem;
+          color: #1a202c;
+        }
+
+        .timer-display {
+          font-size: 2.5rem;
+          font-weight: 600;
+          color: #2d3748;
+          margin: 10px 0;
+        }
+
+        .timer-description {
+          font-size: 1rem;
+          color: #4a5568;
+        }
+      </style>
+
+      <script>
+        let timerElement = document.getElementById('timer');
+        let timeRemaining = 10 * 60; // 10 minutes in seconds
+
+        function updateTimer() {
+          let minutes = Math.floor(timeRemaining / 60);
+          let seconds = timeRemaining % 60;
+          timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+          if (timeRemaining > 0) {
+        timeRemaining--;
+          } else {
+        clearInterval(timerInterval);
+          }
+        }
+
+        let timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); // Initialize display
+      </script>
       <main>
         <div class="dashboard-grid">
           <!-- QR Code Section -->
@@ -31,19 +85,27 @@
             <div class="qr-code-wrapper pulse-animation">
                 <img src="qr.jpg" alt="QR Code" />
             </div>
-            
+
             <p class="hashtag-text">Scan to share with hashtag</p>
             <p class="hashtag-value">#Savesoil_KGiSLEdu</p>
         </div>
 
           <!-- Tweet Counter Section -->
           <div class="card counter-container">
-            <h2>X (Twitter) Counter</h2>
+            <h2>Initialized</h2>
             <div class="counter-wrapper">
               <i class="fab fa-x-twitter twitter-icon"></i>
               <div class="counter-content">
                 <div id="tweet-counter" class="counter-value">0</div>
-                <p>Posts with our hashtag</p>
+                <p>Posts</p>
+              </div>
+            </div>
+            <h2>Reposts</h2>
+            <div class="counter-wrapper">
+              <i class="fab fa-x-twitter twitter-icon"></i>
+              <div class="counter-content">
+                <div id="tweet-counter" class="counter-value">0</div>
+                <p>Posts</p>
               </div>
             </div>
             <div class="impact-box">
@@ -74,6 +136,14 @@
               <h3>Get Involved</h3>
               <p>Share our message, join local events, and support sustainable practices.</p>
             </div>
+          </div>
+        </div>
+        <div class="card" id="tweet-wall">
+          <h2>Tweet wall</h2>
+          <div class="twitter-card"> 
+            <blockquote class="twitter-tweet"> 
+              <a href="https://twitter.com/ProfSathish/status/1905691956619215268?t=19SWbGSi_g05S5dhQB-fvw&s=19"></a>
+            </blockquote>
           </div>
         </div>
       </main>

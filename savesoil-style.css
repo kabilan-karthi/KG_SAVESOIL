@@ -95,12 +95,16 @@ body {
     padding: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  
+
   .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   }
   
+  #tweet-wall{
+    height:75vh;
+  }
+
   .qr-container {
     flex: 1;
     min-width: 300px;
@@ -265,6 +269,10 @@ body {
   /* Animation for QR code */
   .pulse-animation {
     animation: pulse 2s infinite;
+  }
+  .twitter-card{
+    width:20vw;
+    height:20vw;
   }
   
   @keyframes pulse {
