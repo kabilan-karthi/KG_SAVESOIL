@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save Soil Dashboard</title>
+  <link rel="stylesheet" href="savesoil-style.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    <div class="dashboard-content">
+      <!-- Header with logos -->
+      <header>
+        <div class="logo-container">
+          <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=100&h=100" alt="Save Soil Logo" class="logo">
+          <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=100&h=100" alt="Organization Logo" class="logo">
+        </div>
+        <h1>Save Soil Dashboard</h1>
+      </header>
+
+      <main>
+        <div class="dashboard-grid">
+          <!-- QR Code Section -->
+          <div class="card qr-container">
+            <h2>Scan to Tweet</h2>
+            <div class="qr-code-wrapper pulse-animation">
+              <div id="qrcode"></div>
+            </div>
+            <p class="hashtag-text">Scan to share with hashtag</p>
+            <p class="hashtag-value">#savesoilkgisledu</p>
+          </div>
+
+          <!-- Tweet Counter Section -->
+          <div class="card counter-container">
+            <h2>X (Twitter) Counter</h2>
+            <div class="counter-wrapper">
+              <i class="fab fa-x-twitter twitter-icon"></i>
+              <div class="counter-content">
+                <div id="tweet-counter" class="counter-value">0</div>
+                <p>Posts with our hashtag</p>
+              </div>
+            </div>
+            <div class="impact-box">
+              <h3>Our Impact</h3>
+              <p>Each post helps spread awareness about soil conservation. Thank you for supporting the Save Soil movement!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Information Section -->
+        <div class="card info-section">
+          <h2>About the Save Soil Movement</h2>
+          <p>
+            The Save Soil movement is a global initiative to address the soil crisis by bringing 
+            together people from around the world to advocate for soil health policies. Healthy soil 
+            is essential for our food security, climate, and biodiversity.
+          </p>
+          <div class="info-grid">
+            <div class="info-card">
+              <h3>Why Save Soil?</h3>
+              <p>Soil is the foundation of all terrestrial life and is essential for food production.</p>
+            </div>
+            <div class="info-card">
+              <h3>Our Mission</h3>
+              <p>To inspire at least 3.5 billion people to support policies that revitalize soil health.</p>
+            </div>
+            <div class="info-card">
+              <h3>Get Involved</h3>
+              <p>Share our message, join local events, and support sustainable practices.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>© 2023 Save Soil Movement. All rights reserved.</p>
+        <p>Join us in our mission to save soil and secure our future.</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- QR Code library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script src="savesoil-script.js"></script>
+</body>
+</html>
