@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='tweet.css')}}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .twitter-card-container {
+    width:20vw;
+    height:20vw;
+  }
+#twitter-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px;
+  height:100vh;
+  gap: 2vw 3vw; /* 2vw for columns, 3vw for rows */
+}
+    </style>
+</head>
+<body>
+    <div class="card" id="tweet-wall">
+        <h2>Tweet wall</h2>
+        <div id="loading">Loading tweets...</div>
+        <div id="twitter-cards" class="twitter-card-container"></div>
+      </div>
+      <!-- QR Code library -->
+      <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+      <script src="{{ url_for('static',filename='tweet.js')}}"></script>
+</body>
+</html>

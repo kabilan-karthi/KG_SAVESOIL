@@ -1,12 +1,4 @@
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Generate QR code
-    generateQRCode();
-    
-    // Initialize tweet counter
-    initTweetCounter();
 
-  });
   
   // Function to generate QR code
   
@@ -54,6 +46,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Run fetchTweetCount every 3 seconds
     setInterval(fetchTweetCount, 3000);
+
+    async function fetchPostCount() {
+      const counterElement = document.getElementById('post-counter');
+      const API_URL = "http://127.0.0.1:5000/post_count";
+
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        console.log(data); // Log the response data for debugging
+        if (data && typeof data.accessCount === "number") {
+          counterElement.textContent = data.accessCount.toLocaleString();
+        } else {
+          counterElement.textContent = "N/A";
+        }
+      } catch (error) {
+        console.error("Error fetching post count:", error);
+        counterElement.textContent = "N/A";
+      }
+    }
+
+    // Run fetchTweetCount every 3 seconds
+    setInterval(fetchPostCount, 10000);
   (function() {
     const style = document.createElement('style');
     style.textContent = `
