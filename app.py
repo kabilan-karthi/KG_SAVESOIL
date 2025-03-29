@@ -10,9 +10,7 @@ app = Flask(__name__)
 CORS(app)  # Enable CORS to allow frontend to make cross-origin requests
 
 # Sample list of Twitter URLs that will be rotated
-TWITTER_URLS = [
-    "https://twitter.com/ProfSathish/status/1905691956619215268",
-    ]
+TWITTER_URLS = []
 
 def get_post_count():
     link = "https://docs.google.com/spreadsheets/d/1awmjPTnhTKV-m1ZjTzfpqXJAYCRDqmIymZXV4nffGQQ/edit?resourcekey=&gid=1707978977#gid=1707978977"
@@ -56,7 +54,7 @@ def get_tweets():
                     line = line.split(",")
                     if len(line) < 3:
                         continue
-                    links.append(line[2].strip())
+                    links.append(line[1].strip())
             
         return links
 
@@ -66,12 +64,15 @@ def get_twitter_urls():
 
     # Select unique URLs not recently used
     available_urls = [url for url in TWITTER_URLS]
-    for i in get_tweets():
+    for i in get_tweets()[::-1]:
+        if len(available_urls) >= 25:
+            break
         temp = i.replace('x.com','twitter.com')
         if temp in available_urls:
             continue
         else:
             available_urls.append(temp)
+        
     response = {
         'urls':available_urls
     }

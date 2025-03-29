@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   
                   const link = document.createElement('a');
                   link.href = url;
-                  link.textContent = url;
+               
                   
                   blockquote.appendChild(link);
                   cardElement.appendChild(blockquote);
