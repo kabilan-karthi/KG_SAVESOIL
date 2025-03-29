@@ -25,7 +25,7 @@
       <div class="timer-section">
         <div class="timer-container">
           <h2>Countdown Timer</h2>
-          <div id="timer" class="timer-display">10:00</div>
+          <div id="timer" class="timer-display">10</div>
         </div>
         <p class="timer-description">Time left to take action and make a difference!</p>
       </div>
@@ -61,7 +61,7 @@
 
       <script>
         let timerElement = document.getElementById('timer');
-        let timeRemaining = 10 * 60; // 10 minutes in seconds
+        let timeRemaining = 10; 
 
         function updateTimer() {
           let minutes = Math.floor(timeRemaining / 60);
@@ -92,19 +92,11 @@
 
           <!-- Tweet Counter Section -->
           <div class="card counter-container">
-            <h2>Initialized</h2>
+            <h2>Tweet started</h2>
             <div class="counter-wrapper">
               <i class="fab fa-x-twitter twitter-icon"></i>
               <div class="counter-content">
                 <div id="tweet-counter" class="counter-value">0</div>
-                <p>Posts</p>
-              </div>
-            </div>
-            <h2>Reposts</h2>
-            <div class="counter-wrapper">
-              <i class="fab fa-x-twitter twitter-icon"></i>
-              <div class="counter-content">
-                <div id="post-counter" class="counter-value">0</div>
                 <p>Posts</p>
               </div>
             </div>
@@ -170,7 +162,7 @@
       </main>
       
       <footer>
-        <p>© 2023 Save Soil Movement. All rights reserved.</p>
+        <p>© 2025 Save Soil Movement. All rights reserved.</p>
         <p>Join us in our mission to save soil and secure our future.</p>
       </footer>
     </div>

@@ -52,10 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
       fetchAndRenderTwitterUrls();
 
     // Reload the whole page every 30 seconds
-    setInterval(() => {
-      location.reload();
+    // setInterval(() => {
+    //   location.reload();
    
-    }, 30000);
+    // }, 30000);
 
   (function() {
     const style = document.createElement('style');

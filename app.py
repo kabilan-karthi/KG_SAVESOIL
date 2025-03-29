@@ -3,6 +3,7 @@ from flask_cors import CORS
 import random
 from datetime import datetime
 import requests
+import re
 
 
 
@@ -61,22 +62,32 @@ def get_tweets():
 
 @app.route('/api/tweets', methods=['GET'])
 def get_twitter_urls():
+    def is_valid_url(url):
+        # Simple regex to check if the URL is valid
+        regex = re.compile(
+            r'^(https?://)?'  # http:// or https://
+            r'(x\.com|twitter\.com)/[a-zA-Z0-9_]+/status/\d+'  # x.com or twitter.com with status path
+            r'(\?t=[a-zA-Z0-9_-]+&s=\d+)?$',  # Optional query parameters like ?t=...&s=...
+            re.IGNORECASE
+        )
+        return re.match(regex, url) is not None
 
     # Select unique URLs not recently used
-    available_urls = [url for url in TWITTER_URLS]
-    for i in get_tweets()[::-1]:
+    available_urls = []
+    link_set = get_tweets()[::-1]
+    for i in link_set:
         if len(available_urls) >= 25:
             break
-        temp = i.replace('x.com','twitter.com')
-        if temp in available_urls:
+        temp = i.replace('x.com', 'twitter.com')
+        if temp in available_urls or not is_valid_url(temp):
             continue
         else:
             available_urls.append(temp)
-        
+
     response = {
-        'urls':available_urls
+        'urls': available_urls
     }
-    
+
     return jsonify(response)
 
 @app.route('/tweet_wall', methods=['GET'])
