@@ -18,22 +18,26 @@ document.addEventListener('DOMContentLoaded', function() {
               twitterCardsContainer.innerHTML = '';
               console.log(urls); // Log the URLs for debugging
               // Create cards for each URL
-              for (const url of urls.urls) {
-                  const cardElement = document.createElement('div');
-                  cardElement.className = 'twitter-card';
-                  
-                  const blockquote = document.createElement('blockquote');
-                  blockquote.className = 'twitter-tweet';
-                  
-                  const link = document.createElement('a');
-                  link.href = url;
-               
-                  
-                  blockquote.appendChild(link);
-                  cardElement.appendChild(blockquote);
-                  
-                  twitterCardsContainer.appendChild(cardElement);
-              };
+                for (const url of urls.urls) {
+                  try {
+                    const cardElement = document.createElement('div');
+                    cardElement.className = 'twitter-card';
+                    
+                    const blockquote = document.createElement('blockquote');
+                    blockquote.className = 'twitter-tweet';
+                    
+                    const link = document.createElement('a');
+                    link.href = url;
+                    
+                    blockquote.appendChild(link);
+                    cardElement.appendChild(blockquote);
+                    
+                    twitterCardsContainer.appendChild(cardElement);
+                  } catch (error) {
+                    console.error(`Error embedding URL ${url}:`, error);
+                  }
+
+                };
 
               // Load Twitter widget script to render tweets
               loadingElement.textContent = '';
