@@ -61,7 +61,32 @@
 <body>
     <div class="card" id="tweet-wall">
         <h2>Latest 25 Tweet Wall</h2>
-        <a href="{{ url_for('save_soil') }}" class="back-button"><i class="fas fa-arrow-left"></i> Back</a>
+        <a href="{{ url_for('save_soil') }}" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+        <style>
+            .back-button {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #007bff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .back-button i {
+            margin-right: 8px;
+            }
+
+            .back-button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+        </style>
         <div id="loading">Loading tweets...</div>
         <div id="twitter-cards"></div>
     </div>

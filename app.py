@@ -18,7 +18,8 @@ TWITTER_URLS = []
 load_dotenv()  # Load environment variables from a .env file
 
 def get_tweets():
-    link = os.getenv("SHEETS_LINK")  # Get the link from the environment variable
+    link = os.getenv("google_sheets_link")  # Get the link from the environment variable
+    print("Link:", link)
     gid = link.split("gid=")[1].split("#")[0]  # Extract GID
     base_url = link.split("/edit")[0]  # Base URL before /edit
     csv_url = f"{base_url}/export?format=csv&gid={gid}"  # Build CSV export link
