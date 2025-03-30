@@ -13,27 +13,6 @@ CORS(app)  # Enable CORS to allow frontend to make cross-origin requests
 # Sample list of Twitter URLs that will be rotated
 TWITTER_URLS = []
 
-def get_post_count():
-    link = "https://docs.google.com/spreadsheets/d/1awmjPTnhTKV-m1ZjTzfpqXJAYCRDqmIymZXV4nffGQQ/edit?resourcekey=&gid=1707978977#gid=1707978977"
-    gid = link.split("gid=")[1].split("#")[0]  # Extract GID
-    base_url = link.split("/edit")[0]  # Base URL before /edit
-    csv_url = f"{base_url}/export?format=csv&gid={gid}"  # Build CSV export link
-
-
-    response = requests.get(csv_url)
-
-    with open("data.csv", "w") as file:
-
-        file.write(response.text)
-
-
-
-    with open("data.csv") as file:
-
-        data = file.readlines()
-
-        return int(data[0].split(",")[-1])
-
 def get_tweets():
     link = "https://docs.google.com/spreadsheets/d/1awmjPTnhTKV-m1ZjTzfpqXJAYCRDqmIymZXV4nffGQQ/edit?resourcekey=&gid=1707978977#gid=1707978977"
     gid = link.split("gid=")[1].split("#")[0]  # Extract GID
