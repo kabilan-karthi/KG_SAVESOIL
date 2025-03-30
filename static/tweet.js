@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
               loadingElement.textContent = 'Loading tweets...';
               
               // Simulated fetch - replace with actual fetch to your backend
-              const response = await fetch("{{url_for('get_twitter_urls')}}");
+              const response = await fetch(`${window.location.origin}/api/tweets`);
               const urls = await response.json();
 
               // Clear previous cards
