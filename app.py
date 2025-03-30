@@ -5,6 +5,8 @@ from datetime import datetime
 import requests
 import re
 import time
+import os
+from dotenv import load_dotenv
 
 
 app = Flask(__name__)
@@ -13,30 +15,29 @@ CORS(app)  # Enable CORS to allow frontend to make cross-origin requests
 # Sample list of Twitter URLs that will be rotated
 TWITTER_URLS = []
 
+load_dotenv()  # Load environment variables from a .env file
+
 def get_tweets():
-    link = "https://docs.google.com/spreadsheets/d/1awmjPTnhTKV-m1ZjTzfpqXJAYCRDqmIymZXV4nffGQQ/edit?resourcekey=&gid=1707978977#gid=1707978977"
+    link = os.getenv("SHEETS_LINK")  # Get the link from the environment variable
     gid = link.split("gid=")[1].split("#")[0]  # Extract GID
     base_url = link.split("/edit")[0]  # Base URL before /edit
     csv_url = f"{base_url}/export?format=csv&gid={gid}"  # Build CSV export link
 
-
     response = requests.get(csv_url)
 
     with open("data.csv", "w") as file:
-
         file.write(response.text)
-
 
     links = []
     with open("data.csv") as file:
         data = file.readlines()
         for line in data[6:]:
-                    line = line.split(",")
-                    if len(line) < 3:
-                        continue
-                    links.append(line[1].strip())
+            line = line.split(",")
+            if len(line) < 3:
+                continue
+            links.append(line[1].strip())
             
-        return links
+    return links
 
 
 @app.route('/api/tweets', methods=['GET'])
