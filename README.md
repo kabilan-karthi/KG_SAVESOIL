@@ -7,10 +7,6 @@ It displays a live count of tweets using the hashtag and features an efficient, 
 The dashboard also includes a countdown timer to encourage timely action, a QR code for easy social sharing, and educational sections to explain the importance of saving soil. 
 It’s designed to boost participation, awareness, and community engagement for soil conservation efforts.
 
-Excellent! Here’s a **complete, clear, professional-style “Installation” section** you can copy into your README.md for your Flask project.
-
-You can tweak it to match your environment (Windows / Mac / Linux), but this version is *cross-platform friendly* with all common options.
-
 ---
 
 ## ✅ 📦 Installation
