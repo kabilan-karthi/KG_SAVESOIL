@@ -18,8 +18,7 @@ You can tweak it to match your environment (Windows / Mac / Linux), but this ver
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/kg-save-soil-dashboard.git
-cd kg-save-soil-dashboard
+git clone https://github.com/kabilan-karthi/KG_SAVESOIL.git
 ```
 
 ---
@@ -51,9 +50,6 @@ python -m venv venv
 
 ### 3️⃣ Install dependencies
 
-```bash
-pip install -r requirements.txt
-```
 ```bash
 pip install Flask
 ```
